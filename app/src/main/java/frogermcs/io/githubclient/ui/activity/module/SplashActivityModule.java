@@ -28,9 +28,8 @@ public class SplashActivityModule {
     }
 
     @Provides
-    @ActivityScope
-    SplashActivityPresenter
-    provideSplashActivityPresenter(Validator validator, UserManager userManager, HeavyLibraryWrapper heavyLibraryWrapper) {
+    @ActivityScope//Module中@Provides标注的方法是可以带输入参数的，其参数值可以由Module中的其他被@Provides标注的方法提供。
+    SplashActivityPresenter provideSplashActivityPresenter(Validator validator, UserManager userManager, HeavyLibraryWrapper heavyLibraryWrapper) {
         return new SplashActivityPresenter(splashActivity, validator, userManager, heavyLibraryWrapper);
     }
 }

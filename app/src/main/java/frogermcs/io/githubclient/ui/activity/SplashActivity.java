@@ -35,9 +35,10 @@ public class SplashActivity extends BaseActivity {
     @BindView(R.id.btnShowRepositories)
     Button btnShowRepositories;
 
+    //@Inject:通常在需要依赖的地方使用这个注解。换句话说，你用它告诉Dagger这个类或者字段需要依赖注入。这样，Dagger就会构造一个这个类的实例并满足他们的依赖。
     //These references will be satisfied by 'SplashActivityComponent.inject(this)' method
-    @Inject
-    SplashActivityPresenter presenter;
+    @Inject//标记presenter将被注入
+    SplashActivityPresenter presenter;// 成员变量要求是包级可见，也就是说@Inject不可以标记为private类型。
     @Inject
     AnalyticsManager analyticsManager;
 
@@ -74,7 +75,7 @@ public class SplashActivity extends BaseActivity {
         GithubClientApplication.get(this)
                 .getAppComponent()
                 .plus(new SplashActivityModule(this))
-                .inject(this);
+                .inject(this);// 将实现类注入
         //Debug.stopMethodTracing();
     }
 
